@@ -1,7 +1,8 @@
+// components/LoginRegister.js
 import React, { useState, useEffect, useRef } from "react";
+import { ScrollView, StyleSheet } from "react-native";
 import axios from "axios";
 import config from "../config";
-import { View, Text } from "react-native";
 
 // import our components
 import LoginForm from "./LoginForm";
@@ -11,7 +12,7 @@ import ForgotSecurityForm from "./ForgotSecurityForm";
 import EnterOtpForm from "./EnterOtpForm";
 import UpdatePasswordForm from "./UpdatePasswordForm";
 import ChangePasswordForm from "./ChangePasswordForm";
-import ConfirmationView from "./ConfirmationView";
+// import ConfirmationView from "./ConfirmationView";
 import LoggedInView from "./LoggedInView";
 
 // main container component for our auth flows
@@ -54,7 +55,7 @@ const LoginRegister = () => {
 
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
-  // store verified user id after otp verification
+  // store verified user id after OTP verification
   const [userForOTP, setUserForOTP] = useState(null);
 
   const [loggedIn, setLoggedIn] = useState(false);
@@ -317,108 +318,104 @@ const LoginRegister = () => {
     changeView("login");
   };
 
-  // render views based on currentView
-  if (loggedIn && currentView === "loggedIn") {
-    return (
-      <LoggedInView
-        user={user}
-        changeView={changeView}
-        handleLogout={handleLogout}
-      />
-    );
-  }
-  if (currentView === "confirmation") {
-    return <ConfirmationView message={message} changeView={changeView} />;
-  }
-  if (currentView === "enterOTP") {
-    return (
-      <EnterOtpForm
-        otpData={otpData}
-        handleOtpChange={handleOtpChange}
-        handleOtpSubmit={handleOtpSubmit}
-        errors={errors}
-        message={message}
-        loading={loading}
-        changeView={changeView}
-      />
-    );
-  }
-  if (currentView === "updatePassword") {
-    return (
-      <UpdatePasswordForm
-        updatePasswordData={updatePasswordData}
-        handleUpdatePasswordChange={handleUpdatePasswordChange}
-        handleUpdatePasswordSubmit={handleUpdatePasswordSubmit}
-        errors={errors}
-        message={message}
-        changeView={changeView}
-        showPasswordTooltip={showPasswordTooltip}
-        setShowPasswordTooltip={setShowPasswordTooltip}
-      />
-    );
-  }
-  if (currentView === "changePassword") {
-    return (
-      <ChangePasswordForm
-        handleChangePasswordRequest={handleChangePasswordRequest}
-        loading={loading}
-        changeView={changeView}
-        message={message}
-      />
-    );
-  }
-  if (currentView === "forgot") {
-    return (
-      <ForgotPasswordForm
-        forgotData={forgotData}
-        handleForgotChange={handleForgotChange}
-        handleForgotSubmit={handleForgotSubmit}
-        errors={errors}
-        message={message}
-        changeView={changeView}
-      />
-    );
-  }
-  if (currentView === "forgotSecurity") {
-    return (
-      <ForgotSecurityForm
-        forgotSecurityData={forgotSecurityData}
-        handleForgotSecurityChange={handleForgotSecurityChange}
-        handleForgotSecuritySubmit={handleForgotSecuritySubmit}
-        errors={errors}
-        message={message}
-        changeView={changeView}
-        loading={loading}
-      />
-    );
-  }
-  if (currentView === "register") {
-    return (
-      <RegisterForm
-        registerData={registerData}
-        handleRegisterChange={handleRegisterChange}
-        handleRegisterSubmit={handleRegisterSubmit}
-        errors={errors}
-        message={message}
-        changeView={changeView}
-        showPasswordTooltip={showPasswordTooltip}
-        setShowPasswordTooltip={setShowPasswordTooltip}
-        showUsernameTooltip={showUsernameTooltip}
-        setShowUsernameTooltip={setShowUsernameTooltip}
-      />
-    );
-  }
-  // default to login view
+  // render views using a ScrollView to align vertically
   return (
-    <LoginForm
-      loginData={loginData}
-      handleLoginChange={handleLoginChange}
-      handleLoginSubmit={handleLoginSubmit}
-      errors={errors}
-      message={message}
-      changeView={changeView}
-    />
+    <ScrollView contentContainerStyle={styles.container}>
+      {loggedIn && currentView === "loggedIn" && (
+        <LoggedInView
+          user={user}
+          changeView={changeView}
+          handleLogout={handleLogout}
+        />
+      )}
+      {/* {currentView === "confirmation" && (
+        <ConfirmationView message={message} changeView={changeView} />
+      )} */}
+      {currentView === "enterOTP" && (
+        <EnterOtpForm
+          otpData={otpData}
+          handleOtpChange={handleOtpChange}
+          handleOtpSubmit={handleOtpSubmit}
+          errors={errors}
+          message={message}
+          loading={loading}
+          changeView={changeView}
+        />
+      )}
+      {currentView === "updatePassword" && (
+        <UpdatePasswordForm
+          updatePasswordData={updatePasswordData}
+          handleUpdatePasswordChange={handleUpdatePasswordChange}
+          handleUpdatePasswordSubmit={handleUpdatePasswordSubmit}
+          errors={errors}
+          message={message}
+          changeView={changeView}
+          showPasswordTooltip={showPasswordTooltip}
+          setShowPasswordTooltip={setShowPasswordTooltip}
+        />
+      )}
+      {currentView === "changePassword" && (
+        <ChangePasswordForm
+          handleChangePasswordRequest={handleChangePasswordRequest}
+          loading={loading}
+          changeView={changeView}
+          message={message}
+        />
+      )}
+      {currentView === "forgot" && (
+        <ForgotPasswordForm
+          forgotData={forgotData}
+          handleForgotChange={handleForgotChange}
+          handleForgotSubmit={handleForgotSubmit}
+          errors={errors}
+          message={message}
+          changeView={changeView}
+        />
+      )}
+      {currentView === "forgotSecurity" && (
+        <ForgotSecurityForm
+          forgotSecurityData={forgotSecurityData}
+          handleForgotSecurityChange={handleForgotSecurityChange}
+          handleForgotSecuritySubmit={handleForgotSecuritySubmit}
+          errors={errors}
+          message={message}
+          changeView={changeView}
+          loading={loading}
+        />
+      )}
+      {currentView === "register" && (
+        <RegisterForm
+          registerData={registerData}
+          handleRegisterChange={handleRegisterChange}
+          handleRegisterSubmit={handleRegisterSubmit}
+          errors={errors}
+          message={message}
+          changeView={changeView}
+          showPasswordTooltip={showPasswordTooltip}
+          setShowPasswordTooltip={setShowPasswordTooltip}
+          showUsernameTooltip={showUsernameTooltip}
+          setShowUsernameTooltip={setShowUsernameTooltip}
+        />
+      )}
+      {currentView === "login" && (
+        <LoginForm
+          loginData={loginData}
+          handleLoginChange={handleLoginChange}
+          handleLoginSubmit={handleLoginSubmit}
+          errors={errors}
+          message={message}
+          changeView={changeView}
+        />
+      )}
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    justifyContent: "center",
+  },
+});
 
 export default LoginRegister;

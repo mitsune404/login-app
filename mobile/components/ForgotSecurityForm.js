@@ -73,12 +73,12 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "#1e1e1e",
-    borderRadius: 8,
+    borderRadius: 30,
     margin: 20,
     alignItems: "center",
   },
   heading: {
-    fontSize: 22,
+    fontSize: 24,
     color: "#ffffff",
     marginBottom: 20,
   },
@@ -89,21 +89,22 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     color: "#ffffff",
-    marginBottom: 5,
+    margin: 5,
   },
   input: {
     backgroundColor: "#2a2a2a",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 15,
     color: "#ffffff",
   },
   button: {
     backgroundColor: "#4caf50",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 30,
     alignItems: "center",
-    width: "100%",
-    marginBottom: 10,
+    width: "60%",
+    marginTop: 20,
+    marginBottom: 5,
   },
   buttonText: {
     color: "#ffffff",
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   message: {
-    color: "#ffffff",
+    color: "#ffff00",
     marginTop: 10,
     textAlign: "center",
   },

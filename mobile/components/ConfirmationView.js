@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 const ConfirmationView = ({ message, changeView }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>OTP Sent</Text>
+      <Text style={styles.heading}>Password reset link sent</Text>
       <Text style={styles.message}>{message}</Text>
       <TouchableOpacity
         style={styles.button}

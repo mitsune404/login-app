@@ -1,6 +1,7 @@
 import React from "react";
 import {
   View,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -23,7 +24,7 @@ const RegisterForm = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Register</Text>
+      <Text style={styles.heading}>{config.labels.registerTitle}</Text>
       <View style={styles.formGroup}>
         <Text style={styles.label}>{config.labels.emailLabel}</Text>
         <TextInput
@@ -36,7 +37,7 @@ const RegisterForm = ({
         {errors.email && <Text style={styles.error}>{errors.email}</Text>}
       </View>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>Username</Text>
+        <Text style={styles.label}>{config.labels.usernameLabel}</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter your username"
@@ -83,7 +84,7 @@ const RegisterForm = ({
         )}
       </View>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>Company Name (Optional)</Text>
+        <Text style={styles.label}>{config.labels.companyLabel}</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter your company name"
@@ -104,7 +105,7 @@ const RegisterForm = ({
         {errors.website && <Text style={styles.error}>{errors.website}</Text>}
       </View>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>Age (in years)</Text>
+        <Text style={styles.label}>Age</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter your age"
@@ -115,10 +116,9 @@ const RegisterForm = ({
         />
         {errors.age && <Text style={styles.error}>{errors.age}</Text>}
       </View>
+      <Text style={styles.subheading}>{config.labels.securityTitle}</Text>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>
-          Security Question 1: What is your first pet's name?
-        </Text>
+        <Text style={styles.label}>{config.labels.securityQuestion1}</Text>
         <TextInput
           style={styles.input}
           placeholder="Answer"
@@ -131,9 +131,7 @@ const RegisterForm = ({
         )}
       </View>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>
-          Security Question 2: What is your first city's name?
-        </Text>
+        <Text style={styles.label}>{config.labels.securityQuestion2}</Text>
         <TextInput
           style={styles.input}
           placeholder="Answer"
@@ -146,9 +144,7 @@ const RegisterForm = ({
         )}
       </View>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>
-          Security Question 3: What is your first school's name?
-        </Text>
+        <Text style={styles.label}>{config.labels.securityQuestion3}</Text>
         <TextInput
           style={styles.input}
           placeholder="Answer"
@@ -160,7 +156,8 @@ const RegisterForm = ({
           <Text style={styles.error}>{errors.securityAnswer3}</Text>
         )}
       </View>
-      {/* recaptcha is bypassed in react native */}
+      {/* recaptcha is bypassed in mobile app */}
+      {message !== "" && <Text style={styles.message}>{message}</Text>}
       <TouchableOpacity style={styles.button} onPress={handleRegisterSubmit}>
         <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
@@ -169,7 +166,6 @@ const RegisterForm = ({
           Already have an account? Login here
         </Text>
       </TouchableOpacity>
-      {message !== "" && <Text style={styles.message}>{message}</Text>}
     </View>
   );
 };
@@ -178,13 +174,19 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "#1e1e1e",
-    borderRadius: 8,
+    borderRadius: 20,
     margin: 20,
   },
   heading: {
-    fontSize: 24,
+    fontSize: 28,
     color: "#ffffff",
     marginBottom: 20,
+    textAlign: "center",
+  },
+  subheading: {
+    fontSize: 20,
+    color: "#ffffff",
+    margin: 15,
     textAlign: "center",
   },
   formGroup: {
@@ -193,28 +195,29 @@ const styles = StyleSheet.create({
   label: {
     color: "#ffffff",
     fontSize: 16,
-    marginBottom: 5,
+    margin: 5,
   },
   input: {
     backgroundColor: "#2a2a2a",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 15,
     color: "#ffffff",
   },
   tooltip: {
     backgroundColor: "#424242",
     color: "#ffffff",
     padding: 5,
-    borderRadius: 4,
+    borderRadius: 5,
     marginTop: 5,
     fontSize: 12,
   },
   button: {
     backgroundColor: "#4caf50",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 30,
     alignItems: "center",
-    marginBottom: 10,
+    marginTop: 30,
+    marginHorizontal: 40,
   },
   buttonText: {
     color: "#ffffff",
@@ -223,14 +226,14 @@ const styles = StyleSheet.create({
   switchText: {
     color: "#4caf50",
     textAlign: "center",
-    marginTop: 10,
+    marginTop: 20,
   },
   error: {
     color: "#f44336",
     marginTop: 5,
   },
   message: {
-    color: "#ffffff",
+    color: "#ffff00",
     marginTop: 10,
     textAlign: "center",
   },

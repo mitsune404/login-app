@@ -1,9 +1,18 @@
+// config.js
 export default {
   labels: {
     loginTitle: "Login",
-    registerTitle: "Register",
+    registerTitle: "Sign Up",
+    emailLabel: "Email",
+    usernameLabel: "Username",
+    passwordLabel: "Password",
+    companyLabel: "Company Name (Optional)",
     forgotPasswordTitle: "Forgot Password",
     forgotSecurityTitle: "Security Questions",
+    securityTitle: "Security Questions",
+    securityQuestion1: "Security Question 1: What is your first pet's name?",
+    securityQuestion2: "Security Question 2: What is your first city's name?",
+    securityQuestion3: "Security Question 3: What is your first school's name?",
     enterOtpTitle: "Enter OTP",
     updatePasswordTitle: "Update Your Password",
     changePasswordTitle: "Change Password",
@@ -20,5 +29,5 @@ export default {
     usernameTooltip:
       "Username must be alphanumeric with no special characters.",
   },
-  apiUrl: "http://LOCAL-IP:5000/api/auth",
+  apiUrl: "http://192.168.113.161:5000/api/auth",
 };

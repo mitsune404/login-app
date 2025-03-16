@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "#1e1e1e",
-    borderRadius: 8,
+    borderRadius: 30,
     margin: 20,
   },
   heading: {
@@ -89,12 +89,12 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     color: "#ffffff",
-    marginBottom: 5,
+    margin: 5,
   },
   input: {
     backgroundColor: "#2a2a2a",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 15,
     color: "#ffffff",
   },
   tooltip: {
@@ -108,9 +108,10 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#4caf50",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 30,
     alignItems: "center",
-    marginBottom: 10,
+    marginTop: 20,
+    marginHorizontal: 40,
   },
   buttonText: {
     color: "#ffffff",
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   message: {
-    color: "#ffffff",
+    color: "#ffff00",
     marginTop: 10,
     textAlign: "center",
   },

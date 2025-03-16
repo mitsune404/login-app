@@ -12,8 +12,8 @@ const LoginForm = ({
   loginData,
   handleLoginChange,
   handleLoginSubmit,
-  recaptchaRef,
-  onCaptchaChange,
+  // recaptchaRef,
+  // onCaptchaChange,
   errors,
   message,
   changeView,
@@ -46,7 +46,8 @@ const LoginForm = ({
         />
         {errors.password && <Text style={styles.error}>{errors.password}</Text>}
       </View>
-      {/* recaptcha is bypassed in react native so we skip its rendering */}
+      {/* recaptcha is bypassed in mobile app */}
+      {message !== "" && <Text style={styles.message}>{message}</Text>}
       <TouchableOpacity style={styles.button} onPress={handleLoginSubmit}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
@@ -58,7 +59,6 @@ const LoginForm = ({
       <TouchableOpacity onPress={() => changeView("forgot")}>
         <Text style={styles.switchText}>Forgot Password?</Text>
       </TouchableOpacity>
-      {message !== "" && <Text style={styles.message}>{message}</Text>}
     </View>
   );
 };
@@ -67,37 +67,36 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "#1e1e1e",
-    borderRadius: 8,
+    borderRadius: 20,
     margin: 20,
-    alignItems: "center",
   },
   heading: {
-    fontSize: 24,
+    fontSize: 28,
     color: "#ffffff",
     marginBottom: 20,
+    textAlign: "center",
   },
   formGroup: {
-    width: "100%",
     marginBottom: 15,
   },
   label: {
-    fontSize: 16,
     color: "#ffffff",
-    marginBottom: 5,
+    fontSize: 16,
+    margin: 5,
   },
   input: {
     backgroundColor: "#2a2a2a",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 15,
     color: "#ffffff",
   },
   button: {
     backgroundColor: "#4caf50",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 30,
     alignItems: "center",
-    width: "100%",
-    marginBottom: 10,
+    marginTop: 20,
+    marginHorizontal: 40,
   },
   buttonText: {
     color: "#ffffff",
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   message: {
-    color: "#ffffff",
+    color: "#ffff00",
     marginTop: 10,
     textAlign: "center",
   },

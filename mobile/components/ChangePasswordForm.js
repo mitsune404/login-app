@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "#1e1e1e",
-    borderRadius: 8,
+    borderRadius: 30,
     margin: 20,
   },
   heading: {
@@ -48,9 +48,10 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#4caf50",
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 30,
     alignItems: "center",
-    marginBottom: 10,
+    margin: 10,
+    marginHorizontal: 40,
   },
   buttonText: {
     color: "#ffffff",
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   message: {
-    color: "#f44336",
+    color: "#ffff00",
     marginTop: 10,
     textAlign: "center",
   },
